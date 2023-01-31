@@ -27,6 +27,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
+        progressBar.progress = 1.0 / Float(quiz.count)
     }
     @IBAction func answerButtonPressed(_ sender: UIButton) {
         
@@ -42,6 +43,7 @@ class ViewController: UIViewController {
         if questionNumber+1 < quiz.count {
             questionNumber += 1
         } else { questionNumber = 0 }
+        
         progressBar.progress = Float(questionNumber + 1) / Float(quiz.count)
         
         Timer.scheduledTimer(timeInterval: 0.2, target:self, selector: #selector(updateUI), userInfo:nil, repeats: false)
